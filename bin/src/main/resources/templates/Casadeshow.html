@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org/"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Domum Amet</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker.standalone.min.css">
+</head>
+<nav class="navbar navbar-defaut navbar-static-top">
+	<div class="container-fluid">
+		<div class="navbar-header"></div>
+	</div>
+	<ul class="nav nav-tabs">
+		<li role="presentation"><img class="logo"
+			src="/imagens/L_logo.png" width="2%" height="2%"></li>
+		<li role="presentation"><a href="/home">Home</a></li>
+		<li role="presentation"><a href="/casadeshow">Casa de Show</a></li>
+		<li role="presentation"><a href="/evento">Eventos</a></li>
+		<li role="presentation"><a href="/historico">Histórico</a></li>
+	</ul>
+</nav>
+<body>
+	<form class="form-horizontal" method="POST" action="/casadeshow">
+		<div class="panel panel-casa panel-defaut">
+			<div class="panel-heading">
+				<h1 class="panel-title">Cadastro de Casas</h1>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="endereco" class="col-sm-2 control-label">Endereço</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="endereco" name="endereco"/>					
+					</div>
+				</div>	
+				<div class="form-group">
+					<label for="local" class="col-sm-2 control-label">Local</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="local" name="local"/>					
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="capacidade" class="col-sm-2 control-label">Capacidade</label>
+					<div class="col-sm-2">
+						<input type="text" class="form-control" id="capacidade" name="capacidade"/>					
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-salvar btn-primary">Salvar</button>
+					</div>
+				</div>
+				<div class="table-responsive">
+						<table class="table table-bordered table-hover table-condensed table">
+							<thead>
+								<tr>
+									<th class="text-center col-md-1">#</th>
+									<th class="text-center col-md-1">Endereço</th>
+									<th class="text-center col-md-1">Local</th>
+									<th class="text-center col-md-1">Capacidade</th>
+									<th class="col-md-1"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="casas : ${casas}">
+									<td class="text-center" th:text="${casas.ID}">1</td>
+									<td class="text-center" th:text="${casas.endereco}"></td>
+									<td class="text-center" th:text="${casas.local}"></td>
+									<td class="text-center" th:text="${casas.capacidade}"></td>
+								</tr>
+								<tr>
+									<td colspan="4" th:if="${#lists.isEmpty(casas)}">Nenhuma casa foi encontrada!</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+			</div>		
+		</div>
+	</form>
+</body>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/eventos.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.pt-BR.min.js"></script>
+<script src="/js/jquery.maskMoney.min.js"></script>
+</html>

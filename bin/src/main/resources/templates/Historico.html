@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org/"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Domum Amet</title>
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css"
+	href="/css/bootstrap-datepicker.standalone.min.css">
+</head>
+<nav class="navbar navbar-defaut navbar-static-top">
+	<div class="container-fluid">
+		<div class="navbar-header"></div>
+	</div>
+
+	<ul class="nav nav-tabs">
+		<li role="presentation"><img class="logo"
+			src="/imagens/L_logo.png" width="2%" height="2%"></li>
+		<li role="presentation"><a href="/home">Home</a></li>
+		<li role="presentation"><a href="/casadeshow">Casa de Show</a></li>
+		<li role="presentation"><a href="/evento">Eventos</a></li>
+		<li role="presentation"><a href="/historico">Histórico</a></li>
+	</ul>
+</nav>
+<body>
+
+	<form class="form-horizontal" method="POST" action="/historico">
+		<div class="panel panel-evento panel-defaut">
+			<div class="panel-heading">
+				<h1 class="panel-title">Historico de Compras de Ingresso</h1>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table
+						class="table table-bordered table-hover table-condensed table">
+						<thead>
+							<tr>
+								<th class="text-center col-md-1">#</th>
+								<th class="text-center col-md-1">Nome</th>
+								<th class="text-center col-md-1">Ingressos</th>
+								<th class="text-center col-md-1">Data</th>
+								<th class="text-center col-md-1">Preço do Ingresso</th>
+								<th class="text-center col-md-1">Casa de Show</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="evento : ${eventos}">
+								<td class="text-center" th:text="${evento.ID}">1</td>
+								<td class="text-center" th:text="${evento.nome}"></td>
+								<td class="text-center" th:text="${{evento.data}}"></td>
+								<td class="text-center" th:text="|R$ ${{evento.preco}}|"></td>
+								<td class="text-center" th:text="${evento.endereco}"></td>
+							</tr>
+							<tr>
+								<td colspan="5" th:if="${#lists.isEmpty(eventos)}">Nenhum ingresso foi comprado!</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	
+</body>
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/eventos.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/bootstrap-datepicker.pt-BR.min.js"></script>
+<script src="/js/jquery.maskMoney.min.js"></script>
+</html>
+
+

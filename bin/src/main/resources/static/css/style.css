@@ -1,0 +1,75 @@
+/*----HOME----*/
+.logo{
+	margin-left:45%;
+	margin-top:1%;
+}
+
+body{
+	background-color: #247BA0;
+}
+.navbar{
+	background-color: #70C1B3;
+}
+.nav a{
+	color: black;	
+}
+
+.nav-tabs{
+	padding-left: 36%;
+}
+
+/*-------Casa de Show-------*/
+
+.panel-title{
+	padding-bottom: 2%;	
+}
+
+.panel-casa{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.panel-heading{
+	padding-left: 18%;
+}
+
+/*------Eventos-------*/
+
+.panel-evento{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+
+}
+
+/*-------Historico--------*/
+
+
+.panel-hist{
+	margin-left: 10%;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

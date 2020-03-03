@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org/"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="LayoutPadrao">
+<head>
+<title>Domum Amet - Cadastro de Casa</title>
+</head>
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/casadeshow" th:object="${casadeshow}">
+	  <div layout:insert="MensagemCasa"></div>
+		<div class="panel panel-casa panel-defaut">
+			<div class="panel heading">
+				<div class="clearfix">
+					<h3 style="padding-top: 1%; padding-bottom: 1%; font-size: 250%;font-family: MV Boli;"
+						class="panel-title panel-casa" align="center">Cadastro da Casa de Show</h3>
+				</div>
+			</div>
+			<div class="panel-body">
+			  <input type="hidden" th:field="*{ID}"/>
+				<div class="form-group" th:classappend="${#fields.hasErrors('endereco')} ? has-error">
+					<label for="endereco" class="col-sm-2 control-label">Endereço</label>
+					<div class="col-sm-4">
+						<input type="text" autocomplete = "off" class="form-control" id="endereco" th:field="*{endereco}"
+						placeholder="Digite o endereço da casa de show." />
+					</div>
+				</div>
+				<div class="form-group" th:classappend="${#fields.hasErrors('localizacao')} ? has-error">
+					<label for="localizacao" class="col-sm-2 control-label">Casa de Show</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" autocomplete = "off" id="localizacao" th:field="*{localizacao}" 
+						placeholder="Digite o nome da casa de show."/>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-salvar btn-primary">Salvar</button>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table
+						class="table table-bordered table-hover table-condensed table">
+						<thead>
+							<tr>
+								<th class="text-center col-md-1">#</th>
+								<th class="text-center col-md-1">Endereço</th>
+								<th class="text-center col-md-1">Casa de Show</th>
+								<th class="text-center col-md-1">Editar</th>
+								<th class="text-center col-md-1">Deletar</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="casa : ${casas}">
+								<td class="text-center" th:text="${casa.ID}">1</td>
+								<td class="text-center" th:text="${casa.endereco}"></td>
+								<td class="text-center" th:text="${casa.localizacao}"></td>
+								<td class="text-center">
+									<a class="btn btn-link btn-xs" th:href="@{/casadeshow/editar/{id}(id=${casa.ID})}">
+										<span >Editar</span>
+									</a>
+								</td>
+								<td class="text-center">
+									<a class="btn btn-link btn-xs" th:href="@{/casadeshow/{id}(id=${casa.ID})}">
+										<span>Deletar</span>
+									</a>
+								</td>																
+							</tr>
+							<tr>
+								<td colspan="3" th:if="${#lists.isEmpty(casas)}">Nenhuma
+									casa foi encontrada!</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>
