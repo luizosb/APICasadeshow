@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.gft.casadeeventos.model.Casadeshow;
 import com.gft.casadeeventos.model.Evento;
 import com.gft.casadeeventos.services.EventosService;
 
@@ -72,6 +74,53 @@ public class EventosResources {
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 	
+	@ApiOperation(value="Buscar em ordem alfabética ascendente")
+	@GetMapping("/nome/asc")
+	public ResponseEntity<List<Evento>> nomeAsc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarNomeAsc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem alfabética descendente.")
+	@GetMapping("/nome/desc")
+	public ResponseEntity<List<Evento>> nomeDesc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarNmeDesc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem preço crescente.")
+	@GetMapping("/preco/asc")
+	public ResponseEntity<List<Evento>> precoAsc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarPrecoAsc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem preço decrescente.")
+	@GetMapping("/preco/desc")
+	public ResponseEntity<List<Evento>> precoDesc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarPrecoDesc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem capacidade crescente.")
+	@GetMapping("/capacidade/asc")
+	public ResponseEntity<List<Evento>> capacidadeAsc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarCapacidadeAsc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem capacidade decrescente.")
+	@GetMapping("/capacidade/desc")
+	public ResponseEntity<List<Evento>> capacidadeDesc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarCapacidadeDesc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem de data mais recente.")
+	@GetMapping("/data/asc")
+	public ResponseEntity<List<Evento>> dataAsc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarDataAsc());
+	}
+	
+	@ApiOperation(value="Buscar em ordem de datas futuras.")
+	@GetMapping("/data/desc")
+	public ResponseEntity<List<Evento>> dataDesc(){
+		return ResponseEntity.status(HttpStatus.OK).body(eventoServ.listarDataDesc());
+	}
 	
 	
 }

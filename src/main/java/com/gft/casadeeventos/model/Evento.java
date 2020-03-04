@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,51 +23,49 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @SuppressWarnings("deprecation")
 @Entity
-@SequenceGenerator(name="evento_seq", sequenceName="")
+@SequenceGenerator(name = "evento_seq", sequenceName = "")
 public class Evento {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
-	@NotEmpty(message="Insira o nome do evento.")
+
+	@NotEmpty(message = "Insira o nome do evento.")
 	@Size(max = 20, message = "O evento não pode ter mais de 100 caracteres.")
 	private String nome;
-	
+
 	@JsonInclude(Include.NON_NULL)
-	@NotNull(message="A capacidade não pode ser zero.")
-	@DecimalMin(value ="0", message="A capacidade mínima é de 0 pessoas pelo menos.")
-	@DecimalMax(value="60001.00", message="A capacidade máxima deve ser de 60000 pessoas.")
+	@NotNull(message = "A capacidade não pode ser zero.")
+	@DecimalMin(value = "0", message = "A capacidade mínima é de 0 pessoas pelo menos.")
+	@DecimalMax(value = "60001.00", message = "A capacidade máxima deve ser de 60000 pessoas.")
 	private Integer capacidade;
 
 	@JsonInclude(Include.NON_NULL)
-	@NotNull(message="Insira a data do evento.")
+	@NotNull(message = "Insira a data do evento.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date data;
-	
+
 	private int qtdIngresso;
-	
+
 	@JsonInclude(Include.NON_NULL)
-	@NotNull(message="Insira o preço do ingresso.")
-	@DecimalMin(value ="0.01", message="O preço não pode ser 0 (zero).")
-	@DecimalMax(value="4001.00", message="O preço máximo deve ser de 7000 reais.")
+	@NotNull(message = "Insira o preço do ingresso.")
+	@DecimalMin(value = "0.01", message = "O preço não pode ser 0 (zero).")
+	@DecimalMax(value = "4001.00", message = "O preço máximo deve ser de 7000 reais.")
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
-	
+
 	@JsonInclude(Include.NON_NULL)
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(nullable=false)
-	@NotNull(message="Insira uma casa.")
-	@JsonIgnore 
+	@ManyToOne
+	@JoinColumn(nullable = false)
+	@NotNull(message = "Insira uma casa.")
 	private Casadeshow local;
-	
+
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 
@@ -169,9 +166,4 @@ public class Evento {
 		return true;
 	}
 
-	
-	
-	
-	
-	
 }

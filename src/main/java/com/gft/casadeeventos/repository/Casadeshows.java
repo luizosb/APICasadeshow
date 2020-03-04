@@ -6,4 +6,5 @@ import com.gft.casadeeventos.model.Casadeshow;
 
 public interface Casadeshows extends JpaRepository<Casadeshow, Long> {
 
+	Casadeshow findByLocalizacao (String localizacao);
 }

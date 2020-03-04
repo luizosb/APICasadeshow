@@ -5,13 +5,13 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.gft.casadeeventos.model.Casadeshow;
 import com.gft.casadeeventos.repository.Casadeshows;
+import com.gft.casadeeventos.services.exceptions.CasaExistenteException;
 import com.gft.casadeeventos.services.exceptions.CasaNaoEncontradaException;
-import com.gft.casadeeventos.services.exceptions.EventoExistenteException;
-import com.gft.casadeeventos.services.exceptions.EventoNaoEncontradoException;
 
 @Service
 public class CasaService {
@@ -27,7 +27,7 @@ public class CasaService {
 		if (casa.getID() != null) {
 			Optional<Casadeshow> a = casaRepo.findById(casa.getID());
 			if (a.isPresent()) {
-				throw new EventoExistenteException("Autor já existe!");
+				throw new CasaExistenteException("Casa já existe!");
 			}
 		}
 		return casaRepo.save(casa);
@@ -37,7 +37,7 @@ public class CasaService {
 		Optional<Casadeshow> casa = casaRepo.findById(id);
 
 		if (casa.isEmpty()) {
-			throw new EventoNaoEncontradoException("O evento não pode ser encontrado!");
+			throw new CasaNaoEncontradaException("A casa não pode ser encontrado!");
 		}
 		return casa;
 	}
@@ -58,5 +58,25 @@ public class CasaService {
 	private void verificarExistencia(Casadeshow casa) {
 		buscar(casa.getID());
 	}
+
+	public List<Casadeshow> listarOrdem() {
+		return casaRepo.findAll(Sort.by(Sort.Direction.ASC,"endereco"));
+	}
+
+	public List<Casadeshow> listarOrdemDec() {
+		return casaRepo.findAll(Sort.by(Sort.Direction.DESC,"endereco"));
+	}	
+	
+	public Casadeshow buscarNome(String localizacao) {
+		Casadeshow casa = casaRepo.findByLocalizacao(localizacao);
+
+		if (casa==null) {
+			throw new CasaNaoEncontradaException("A casa não pode ser encontrado!");
+		}
+		
+		return casa;
+	}
+	
+	
 	
 }

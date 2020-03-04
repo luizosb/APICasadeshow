@@ -33,7 +33,7 @@ public class Casadeshow {
 	private String localizacao;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="local")
-	@JsonIgnore
+	@JsonIgnore 
 	private List<Evento> envents;
 	
 	public Long getID() {

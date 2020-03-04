@@ -12,6 +12,7 @@ import com.gft.casadeeventos.model.DetalhesErro;
 import com.gft.casadeeventos.services.exceptions.CasaNaoEncontradaException;
 import com.gft.casadeeventos.services.exceptions.EventoExistenteException;
 import com.gft.casadeeventos.services.exceptions.EventoNaoEncontradoException;
+import com.gft.casadeeventos.services.exceptions.MensagemErroException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -64,5 +65,18 @@ public class ResourceExceptionHandler {
 		
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(erro);
 	}
+	
+	 @ExceptionHandler(MensagemErroException.class)
+	    public ResponseEntity<DetalhesErro> handleMensagemErroException(MensagemErroException e, 
+	                HttpServletRequest request) {
+		 
+	        DetalhesErro erro = new DetalhesErro();
+	        erro.setStatus(500l);
+	        erro.setTitulo("Faltou algum dado para preencher.");
+	        erro.setMensagemDesenvolvedor("http://erros.casa.com/500");
+	        erro.setTimestamp(System.currentTimeMillis());
+	        
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(erro);
+	    }
 }
 
