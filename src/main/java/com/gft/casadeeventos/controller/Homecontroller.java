@@ -11,7 +11,6 @@ import com.gft.casadeeventos.model.Evento;
 import com.gft.casadeeventos.repository.Eventos;
 
 @Controller
-@RequestMapping("/home")
 public class Homecontroller {
 	
 	private static final String HOME_VIEW = "Home";
@@ -19,7 +18,7 @@ public class Homecontroller {
 	@Autowired
 	private Eventos event;
 	
-	@RequestMapping
+	@RequestMapping("/home")
 	public ModelAndView home() {
 		List <Evento> todosEventos = event.findAll();
 		ModelAndView mv = new ModelAndView(HOME_VIEW);
@@ -27,6 +26,13 @@ public class Homecontroller {
 		return mv;
 	}
 	
+	@RequestMapping("/")
+	public ModelAndView home2() {
+		List <Evento> todosEventos = event.findAll();
+		ModelAndView mv = new ModelAndView(HOME_VIEW);
+		mv.addObject("eventos", todosEventos);
+		return mv;
+	}
 	
 	
 }

@@ -2,6 +2,7 @@ package com.gft.casadeeventos.resources;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -17,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.gft.casadeeventos.model.Casadeshow;
 import com.gft.casadeeventos.model.Evento;
 import com.gft.casadeeventos.services.EventosService;
 
@@ -52,8 +52,8 @@ public class EventosResources {
 	
 	@ApiOperation(value="Buscar um evento específico.")
 	@RequestMapping(value="/{codigo}", method = RequestMethod.GET)
-	public ResponseEntity<Evento> buscar(@ApiParam(value = "Buscar um evento", example = "1")@PathVariable("codigo") Long codigo){
-		Evento evento = eventoServ.buscar(codigo);
+	public ResponseEntity<Optional<Evento>> buscar(@ApiParam(value = "Buscar um evento", example = "1")@PathVariable("codigo") Long codigo){
+		Optional<Evento> evento = eventoServ.buscar(codigo);
 		return ResponseEntity.status(HttpStatus.OK).body(evento);
 	}
 	

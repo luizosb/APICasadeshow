@@ -9,7 +9,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.gft.casadeeventos.model.Evento;
-import com.gft.casadeeventos.repository.Casadeshows;
 import com.gft.casadeeventos.repository.Eventos;
 import com.gft.casadeeventos.services.exceptions.CasaNaoEncontradaException;
 import com.gft.casadeeventos.services.exceptions.EventoExistenteException;
@@ -21,8 +20,6 @@ public class EventosService {
 		@Autowired
 		private Eventos eventoRepo;
 		
-		@Autowired
-		private Casadeshows casaRepo;
 
 		public List<Evento> listar() {
 			return eventoRepo.findAll();
@@ -38,11 +35,11 @@ public class EventosService {
 			return eventoRepo.save(evento);
 		}
 
-		public Evento buscar(Long codigo) {
+		public Optional<Evento> buscar(Long codigo) {
 			
-			Evento evento = eventoRepo.findById(codigo).get();
+			Optional<Evento> evento = eventoRepo.findById(codigo);
 
-			if (evento == null) {
+			if (evento.isEmpty()) {
 				throw new EventoNaoEncontradoException("O evento não pode ser encontrado!");
 			}
 			return evento;
@@ -74,11 +71,11 @@ public class EventosService {
 		}
 		
 		public List<Evento> listarCapacidadeAsc() {
-			return eventoRepo.findAll(Sort.by(Sort.Direction.ASC,"nome"));
+			return eventoRepo.findAll(Sort.by(Sort.Direction.ASC,"capacidade"));
 		}
 		
 		public List<Evento> listarCapacidadeDesc() {
-			return eventoRepo.findAll(Sort.by(Sort.Direction.DESC,"nome"));
+			return eventoRepo.findAll(Sort.by(Sort.Direction.DESC,"capacidade"));
 		}
 		
 		public List<Evento> listarDataAsc() {

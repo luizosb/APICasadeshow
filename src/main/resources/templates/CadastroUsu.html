@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org/"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="LayoutPadrao">
+<head>
+<title>Domum Amet Cadastro de Usuario</title>
+</head>
+<section layout:fragment="conteudo">
+	<form class="form-horizontal" method="POST" action="/cadastro">
+		<div class="panel panel-casa panel-defaut">
+			<div class="panel heading">
+				<div class="clearfix">
+					<h3
+						style="padding-top: 1%; padding-bottom: 1%; font-size: 250%; font-family: MV Boli;"
+						class="panel-title panel-casa" align="center">Cadastro de
+						Usuário</h3>
+				</div>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label for="username" class="col-sm-2 control-label">Nome do
+						Usuário</label>
+					<div class="col-sm-4">
+						<input type="text" autocomplete="off" class="form-control"
+							id="username" name="username" placeholder="Digite seu nome." />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password" class="col-sm-2 control-label">Senha</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" autocomplete="off"
+							id="password" name="password" placeholder="Digite sua senha." />
+					</div>
+				</div>
+				<div class="form-check">
+
+					<input class="form-check-input position-static" name="adm"
+						type="checkbox" id="adm" aria-label="adm"> <label
+						class="form-check-label" for="adm"> Admin </label>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-salvar btn-primary">Salvar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+</html>
