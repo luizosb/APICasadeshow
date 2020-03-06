@@ -39,7 +39,7 @@ public class EventosService {
 			
 			Optional<Evento> evento = eventoRepo.findById(codigo);
 
-			if (evento.isEmpty()) {
+			if (evento.isPresent()==false) {
 				throw new EventoNaoEncontradoException("O evento não pode ser encontrado!");
 			}
 			return evento;

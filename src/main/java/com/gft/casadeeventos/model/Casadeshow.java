@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Casadeshow {
@@ -27,6 +28,7 @@ public class Casadeshow {
 	@Size(max = 60, message="O endereço tem que possuir no máximo 60 caracteres.")
 	private String endereco;
 	
+	@JsonProperty("nomeCasa")
 	@JsonInclude(Include.NON_NULL)
 	@NotEmpty(message="A casa deve possuir um local.")
 	@Size(max = 60, message="O local tem que possuir no máximo 60 caracteres.")
@@ -56,6 +58,7 @@ public class Casadeshow {
 	public void setEnvents(List<Evento> envents) {
 		this.envents = envents;
 	}
+	
 	public String getLocalizacao() {
 		return localizacao;
 	}

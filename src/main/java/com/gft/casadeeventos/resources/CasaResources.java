@@ -88,7 +88,7 @@ public class CasaResources {
 	}
 	
 	@ApiOperation(value="Buscar por nome.")
-	@GetMapping("/nome/{localizacao}")
+	@GetMapping("/nome/{nomeCasa}")
 	public ResponseEntity<Casadeshow> buscarNome(@ApiParam(value = "Buscar uma casa por nome.")@PathVariable("localizacao") String localizacao){
 		Casadeshow casa = casaServ.buscarNome(localizacao);
 		return ResponseEntity.status(HttpStatus.OK).body(casa);

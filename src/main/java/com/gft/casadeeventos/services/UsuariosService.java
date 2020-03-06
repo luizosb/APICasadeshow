@@ -24,7 +24,7 @@ public class UsuariosService {
 	public Optional<Usuario> buscarUsuario(Long id) {
 		Optional<Usuario> usu = usuRepo.findById(id);
 
-		if (usu.isEmpty()) {
+		if (usu.isPresent()==false) {
 			throw new CasaNaoEncontradaException("A casa não pode ser encontrado!");
 		}
 		return usu;

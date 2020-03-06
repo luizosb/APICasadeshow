@@ -27,17 +27,15 @@ public class SpringFoxConfig implements WebMvcConfigurer{
 					.apis(RequestHandlerSelectors.basePackage("com.gft.casadeeventos.resources"))
 					.paths(PathSelectors.any())
 					.build()
-				.apiInfo(apiInfo())
-				.tags(new Tag("Casa de Eventos", "Mostrar as casas."));
-		
+				.apiInfo(apiInfo());		
 	}
 	
 	public ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Casa de Eventos API")
-				.description("API para Eventos")
+				.title("Domum Amet API")
+				.description("API para Domum Amet")
 				.version("1.0")
-				.contact(new Contact("GFT", "gft.com", "gft.com"))
+				.contact(new Contact("Domum Amet", "gft.com", "gft.com"))
 				.build();
 	}
 	

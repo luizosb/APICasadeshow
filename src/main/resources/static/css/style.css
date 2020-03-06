@@ -15,7 +15,7 @@ body{
 }
 
 .nav-tabs{
-	padding-left: 36%;
+	padding-left: 34%;
 }
 
 .card{
@@ -78,6 +78,9 @@ body{
 	font-size: 75%;
 }
 
+.form-check{
+	margin-left: 17%;
+}
 
 
 

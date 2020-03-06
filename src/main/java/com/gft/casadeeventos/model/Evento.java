@@ -23,6 +23,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -45,6 +46,7 @@ public class Evento {
 	@DecimalMax(value = "60001.00", message = "A capacidade máxima deve ser de 60000 pessoas.")
 	private Integer capacidade;
 
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "Insira a data do evento.")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
