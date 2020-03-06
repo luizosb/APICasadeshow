@@ -1,0 +1,97 @@
+/*----HOME----*/
+
+body{
+	background-color: #247BA0;
+}
+.navbar{
+	background-color: #70C1B3;
+	font-family: MV Boli;
+	font-size: 200%;
+}
+
+.nav a{
+	color: black;	
+	
+}
+
+.nav-tabs{
+	padding-left: 34%;
+}
+
+.card{
+	border: 3px solid black;
+	margin-bottom: 1%;
+	margin-left: 2%;
+	margin-right: 2%;
+	font-weight: bold;
+	font-family: fantasy;
+}
+
+.form{
+	margin-bottom: 2%;
+}
+/*-------Casa de Show-------*/
+
+.panel-title{
+	padding-bottom: 2%;	
+}
+
+.panel-casa{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.panel-heading{
+	padding-left: 18%;
+}
+
+.alert{
+	margin-left:10%;
+	margin-right:10%;
+}
+
+/*------Eventos-------*/
+
+.panel-evento{
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+
+}
+
+/*-------Historico--------*/
+
+
+.panel-hist{
+	margin-left: 10%;
+	
+}
+
+/*-------------Layout-Padrao--------*/
+
+.btn-login{
+	position:relative;
+	margin-left: 90%;
+	margin-top: 2%;
+	font-family: fantasy;
+	font-size: 75%;
+}
+
+.form-check{
+	margin-left: 17%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
