@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import com.gft.casadeeventos.model.Usuario;
@@ -30,6 +31,13 @@ public class UsuariosService {
 		return usu;
 	}
 
+	public void deletar(Long id) {
+		try {
+			usuRepo.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			throw new CasaNaoEncontradaException("O usuário não foi encontrada!");
+		}
+	}
 	
 	
 	

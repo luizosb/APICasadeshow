@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gft.casadeeventos.model.Usuario;
@@ -38,6 +39,13 @@ public class UsuariosResource {
 	public ResponseEntity<Optional<Usuario>> buscar(@ApiParam(value = "Buscar uma casa", example = "1")@PathVariable("ID") Long id){
 		Optional<Usuario> usu = usuServ.buscarUsuario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(usuServ.buscarUsuario(id));
+	}
+	
+	@ApiOperation(value = "Deletar um usuário.")
+	@RequestMapping(value ="/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deletar (@ApiParam(name="Deletar um usuário.", value="Deletar um usuário da lista.")@PathVariable("id") Long id) {
+		usuServ.deletar(id);
+		return ResponseEntity.status(HttpStatus.OK).build();
 	}
 	
 
