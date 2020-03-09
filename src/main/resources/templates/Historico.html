@@ -24,6 +24,7 @@
 								<th class="text-center col-md-1">Ingressos comprados</th>
 								<th class="text-center col-md-1">Data de Compra</th>
 								<th class="text-center col-md-1">Preço do Ingresso (individual)</th>
+								<th class="text-center col-md-1">Deletar</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -32,9 +33,14 @@
 								<td class="text-center" th:text="${ingress.ingressos}"></td>
 								<td class="text-center" th:text="${{ingress.data}}"></td>
 								<td class="text-center" th:text="|R$ ${{ingress.preco}}|"></td>
+								<td class="text-center">
+									<a class="btn btn-link btn-xs" th:href="@{/historico/{ID}(ID=${ingress.id})}">
+										<span>Deletar</span>
+									</a>
+								</td>
 							</tr>
 							<tr>
-								<td colspan="5" th:if="${#lists.isEmpty(ingressos)}">Nenhum ingresso foi comprado!</td>
+								<td colspan="6" th:if="${#lists.isEmpty(ingressos)}">Nenhum ingresso foi comprado!</td>
 							</tr>
 						</tbody>
 					</table>
