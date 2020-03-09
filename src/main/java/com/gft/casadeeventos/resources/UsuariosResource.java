@@ -36,7 +36,7 @@ public class UsuariosResource {
 	
 	@ApiOperation(value="Buscar um usuario específico.")
 	@GetMapping(value="/{ID}")
-	public ResponseEntity<Optional<Usuario>> buscar(@ApiParam(value = "Buscar uma casa", example = "1")@PathVariable("ID") Long id){
+	public ResponseEntity<Optional<Usuario>> buscar(@ApiParam(value = "Buscar um usuario específico.", example = "1")@PathVariable("ID") Long id){
 		Optional<Usuario> usu = usuServ.buscarUsuario(id);
 		return ResponseEntity.status(HttpStatus.OK).body(usuServ.buscarUsuario(id));
 	}
