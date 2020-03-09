@@ -59,7 +59,7 @@ public class EventosResources {
 	
 	@ApiOperation(value = "Deletar um evento")
 	@RequestMapping(value ="/{codigo}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deletar (@ApiParam(name="Deletar um evento.", value="Deletar um evento da lista.")@PathVariable("codigo") Long codigo) {
+	public ResponseEntity<Void> deletar (@ApiParam(value="Deletar um evento da lista.")@PathVariable("codigo") Long codigo) {
 		eventoServ.deletar(codigo);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}

@@ -43,7 +43,8 @@ public class UsuariosResource {
 	
 	@ApiOperation(value = "Deletar um usuário.")
 	@RequestMapping(value ="/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> deletar (@ApiParam(name="Deletar um usuário.", value="Deletar um usuário da lista.")@PathVariable("id") Long id) {
+	public ResponseEntity<Void> deletar (@ApiParam(value="Deletar um usuário da lista.")
+											@PathVariable("id") Long id) {
 		usuServ.deletar(id);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}

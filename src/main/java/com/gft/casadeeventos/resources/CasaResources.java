@@ -60,7 +60,7 @@ public class CasaResources {
 	
 	@ApiOperation(value = "Deletar um casa")
 	@DeleteMapping(value ="/{ID}")
-	public ResponseEntity<Void> deletar (@ApiParam(name="Deletar uma casa.", value="Deletar uma casa da lista.")@PathVariable("ID") Long ID) {
+	public ResponseEntity<Void> deletar (@ApiParam(value="Deletar uma casa da lista.")@PathVariable("ID") Long ID) {
 		casaServ.deletar(ID);
 		return ResponseEntity.status(HttpStatus.OK).build();
 	}
