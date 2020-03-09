@@ -27,25 +27,31 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @SuppressWarnings("deprecation")
 @Entity
 @SequenceGenerator(name = "evento_seq", sequenceName = "")
 public class Evento {
 
+	@ApiModelProperty(example="1")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 
+	@ApiModelProperty(example="Show do Skank")
 	@NotEmpty(message = "Insira o nome do evento.")
 	@Size(max = 20, message = "O evento não pode ter mais de 100 caracteres.")
 	private String nome;
 
+	@ApiModelProperty(example="10000")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "A capacidade não pode ser zero.")
 	@DecimalMin(value = "0", message = "A capacidade mínima é de 0 pessoas pelo menos.")
 	@DecimalMax(value = "60001.00", message = "A capacidade máxima deve ser de 60000 pessoas.")
 	private Integer capacidade;
 
+	@ApiModelProperty(example="20/09/2020")
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "Insira a data do evento.")
@@ -53,8 +59,10 @@ public class Evento {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 
+	@ApiModelProperty(value="Quantidade de Ingresso",example="20000")
 	private int qtdIngresso;
 
+	@ApiModelProperty(example="200")
 	@JsonInclude(Include.NON_NULL)
 	@NotNull(message = "Insira o preço do ingresso.")
 	@DecimalMin(value = "0.01", message = "O preço não pode ser 0 (zero).")
@@ -62,12 +70,14 @@ public class Evento {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal preco;
 
+	@ApiModelProperty(example="Allianz")
 	@JsonInclude(Include.NON_NULL)
 	@ManyToOne
 	@JoinColumn(nullable = false)
 	@NotNull(message = "Insira uma casa.")
 	private Casadeshow local;
 
+	@ApiModelProperty(example="Rock")
 	@Enumerated(EnumType.STRING)
 	private Genero genero;
 
@@ -90,7 +100,8 @@ public class Evento {
 	public Integer getCapacidade() {
 		return capacidade;
 	}
-
+	
+	@ApiModelProperty(value="ID do evento",example="1")
 	public void setCapacidade(Integer capacidade) {
 		this.capacidade = capacidade;
 	}

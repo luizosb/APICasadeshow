@@ -14,8 +14,6 @@ import com.gft.casadeeventos.model.DetalhesErro;
 import com.gft.casadeeventos.services.exceptions.CasaNaoEncontradaException;
 import com.gft.casadeeventos.services.exceptions.EventoExistenteException;
 import com.gft.casadeeventos.services.exceptions.EventoNaoEncontradoException;
-import com.gft.casadeeventos.services.exceptions.SucessoCriadoException;
-import com.gft.casadeeventos.services.exceptions.SucessoException;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
@@ -90,28 +88,6 @@ public class ResourceExceptionHandler {
 		 erro.setTimestamp(System.currentTimeMillis());		 
 		 
 		 return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(erro);
-	 }
-	 
-	 @ExceptionHandler(SucessoException.class)
-	 public ResponseEntity<DetalhesErro> handleSucessoException(SucessoException e,	HttpServletRequest request){
-		 DetalhesErro sucesso = new DetalhesErro();
-		 sucesso.setStatus(200l);
-		 sucesso.setTitulo("Sucesso no processamento.");
-		 sucesso.setMensagemDesenvolvedor("http://sucesso.processar.com/200");
-		 sucesso.setTimestamp(System.currentTimeMillis());		 
-		 
-		 return ResponseEntity.status(HttpStatus.OK).body(sucesso);
-	 }
-	 
-	 @ExceptionHandler(SucessoCriadoException.class)
-	 public ResponseEntity<DetalhesErro> handleSucessoCriadoException(SucessoCriadoException e,	HttpServletRequest request){
-		 DetalhesErro sucesso = new DetalhesErro();
-		 sucesso.setStatus(201l);
-		 sucesso.setTitulo("Sucesso ao criar.");
-		 sucesso.setMensagemDesenvolvedor("http://sucesso.criar.com/201");
-		 sucesso.setTimestamp(System.currentTimeMillis());		 
-		 
-		 return ResponseEntity.status(HttpStatus.CREATED).body(sucesso);
 	 }
 	 
 }

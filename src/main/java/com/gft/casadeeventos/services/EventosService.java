@@ -49,7 +49,7 @@ public class EventosService {
 			try {
 				eventoRepo.deleteById(codigo);
 			} catch (EmptyResultDataAccessException e) {
-				throw new CasaNaoEncontradaException("A casa não foi encontrada!");
+				throw new CasaNaoEncontradaException("O evento não foi encontrada!");
 			}
 		}
 

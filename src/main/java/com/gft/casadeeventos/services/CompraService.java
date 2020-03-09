@@ -23,7 +23,7 @@ public class CompraService {
 			Ingresso ing = ingressoRepo.findById(id).get();
 
 			if (ing == null) {
-				throw new EventoNaoEncontradoException("O evento não pode ser encontrado!");
+				throw new EventoNaoEncontradoException("A compra não pode ser encontrada!");
 			}
 			return ing;
 	}

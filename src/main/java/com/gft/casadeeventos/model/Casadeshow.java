@@ -14,6 +14,9 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import io.swagger.annotations.ApiModelProperty;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -21,13 +24,16 @@ public class Casadeshow {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ApiModelProperty(value="ID da cidade",example="1")
 	private Long ID;
 	
+	@ApiModelProperty(example="Barra Funda")
 	@JsonInclude(Include.NON_NULL)
 	@NotEmpty(message="A casa deve possuir um endereço.")
 	@Size(max = 60, message="O endereço tem que possuir no máximo 60 caracteres.")
 	private String endereco;
 	
+	@ApiModelProperty(example="Allianz")
 	@JsonProperty("nomeCasa")
 	@JsonInclude(Include.NON_NULL)
 	@NotEmpty(message="A casa deve possuir um local.")
@@ -41,6 +47,8 @@ public class Casadeshow {
 	public Long getID() {
 		return ID;
 	}
+	
+	@ApiModelProperty(value="ID da cidade",example="1")
 	public void setID(Long iD) {
 		ID = iD;
 	}

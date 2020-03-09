@@ -8,12 +8,13 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 		<div class="navbar-header">
 		</div>
 	</div>
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs" style="padding-left: 30%;">
 		<li role="presentation"><a href="/home">Home</a></li>
-		<li role="presentation"><a href="/casadeshow">Casas</a></li>
-		<li role="presentation"><a href="/evento">Eventos</a></li>
+		<li role="presentation"><a  href="/casadeshow" access="hasAuthority('ADMIN')">Casas</a></li>
+		<li role="presentation"><a  href="/evento" access="hasAuthority('ADMIN')">Eventos</a></li>
 		<li role="presentation"><a href="/historico">Histórico</a></li>
 		<li role="presentation"><a href="/cadastro">Cadastro</a></li>
+		<li role="presentation"><a href="/logout">Logout</a></li>
 	</ul>
 </nav>
 </html>
